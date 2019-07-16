@@ -14,7 +14,7 @@ This project can be executed by docker with simple steps:
 
 ## Requests examples
 
-***Success Flow (first time execution, because we have to consider the data in h2)***
+***Success (first time execution, because we have to consider the data in h2)***
 
 
 ***Fail***
