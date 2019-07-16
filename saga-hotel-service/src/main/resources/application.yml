@@ -1,0 +1,34 @@
+server:
+  port: 4002
+spring:
+  datasource:
+    url: jdbc:h2:mem:hotel-service;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    username: admin
+    password: null
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false
+camel:
+  service:
+    lra:
+      enabled: true
+      coordinator-url: http://lra-coordinator:8080
+      local-participant-url: http://hotel-service:4002/api
+  component:
+    servlet:
+      mapping:
+        context-path: /api/*
+

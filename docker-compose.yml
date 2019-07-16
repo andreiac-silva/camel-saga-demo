@@ -1,0 +1,51 @@
+version: '3.3'
+services:
+  lra-coordinator:
+    image: jbosstm/lra-coordinator:5.9.5.Final
+    container_name: lra-coordinator
+    environment:
+      - JAVA_OPTIONS=-Djava.net.preferIPv4Stack=true 
+    networks:
+      - saga-example
+    ports:
+      - "8080:8080"
+  travel-pack-service:
+    image: saga-example/travel-pack-service
+    container_name: travel-pack-service
+    ports:
+      - "4000:4000"
+    networks:
+      - saga-example
+    depends_on:
+      - lra-coordinator
+  flight-service:
+    image: saga-example/flight-service
+    container_name: flight-service
+    ports:
+      - "4001:4001"
+    networks:
+      - saga-example
+    depends_on:
+      - lra-coordinator
+  hotel-service:
+    image: saga-example/hotel-service
+    container_name: hotel-service
+    ports:
+      - "4002:4002"
+    networks:
+      - saga-example
+    depends_on:
+      - lra-coordinator
+  payment-service:
+    image: saga-example/payment-service
+    container_name: payment-service
+    ports:
+      - "4003:4003"
+    networks:
+      - saga-example
+    depends_on:
+      - lra-coordinator
+networks:
+  saga-example:
+    external:
+      name: saga-example
