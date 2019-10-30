@@ -1,6 +1,6 @@
 # camel-saga-demo
 Demo prepared for presentation: "A Saga da consistência de dados entre microservices".
-The projects are using spring boot + h2 + camel lra integration to simulate a Saga flow.
+The projects are using spring boot, h2 and camel lra integration to simulate a Saga flow.
 
 ## How to run this project
 
